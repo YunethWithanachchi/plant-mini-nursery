@@ -4,6 +4,11 @@ import PlantList from "./PlantList"
 import PlantCard from "./PlantCard"
 import PlantForm from "./PlantForm"
 
+import Banner from "./components/Banner"
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+
+
 type AppProps = {
     plants: Plant[]
 }
@@ -15,30 +20,39 @@ const App = ({ plants }: AppProps) => {
         plants.find((plant) => plant.id === selectedId) || null
 
     return (
+        <div>
+            <Header/>
+
+            <Banner>
+                <h2>Welcome to the Mini Nursery</h2>
+            </Banner>
+
         <div className="container mt-4">
-            <input
-                type="text"
-                className="form-control mb-3"
-                placeholder="Search plants..."
-                disabled
-            />
+                <input
+                    type="text"
+                    className="form-control mb-3"
+                    placeholder="Search plants..."
+                    disabled
+                />
 
-            <div className="row">
-                <div className="col-md-4">
-                    <PlantList
-                        plants={plants}
-                        selectedId={selectedId}
-                        onSelect={setSelectedId}
-                    />
-                </div>
+                <div className="row">
+                    <div className="col-md-4">
+                        <PlantList
+                            plants={plants}
+                            selectedId={selectedId}
+                            onSelect={setSelectedId}
+                        />
+                    </div>
 
-                <div className="col-md-8">
-                    <PlantForm />
-                    <div className="mt-3">
-                        <PlantCard plant={selectedPlant} />
+                    <div className="col-md-8">
+                        <PlantForm />
+                        <div className="mt-3">
+                            <PlantCard plant={selectedPlant} />
+                        </div>
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }
