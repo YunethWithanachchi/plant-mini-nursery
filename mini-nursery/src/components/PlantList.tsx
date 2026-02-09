@@ -1,9 +1,9 @@
-import type { Plant } from "./types.ts";
+import type { Plant } from "../types.ts";
 
 type PlantListProps = {
     plants: Plant[]
     selectedId: number | null
-    onSelect:(id: number) => void
+    onSelect:(plant: Plant) => void
 }
 
 const PlantList = ({plants, selectedId, onSelect}: PlantListProps)=>{
@@ -16,14 +16,14 @@ const PlantList = ({plants, selectedId, onSelect}: PlantListProps)=>{
                     plant.id === selectedId ? "active":""
                 }`}
                 style={{cursor: "pointer"}}
-                onClick={()=> onSelect(plant.id)}
+                onClick={()=> onSelect(plant)}
                 >
                     <div>
                         <div className="fw-bold">{plant.name}</div>
                         <small className="text-muted">{plant.scientific}</small>
                     </div>
 
-                    <div className="text-end">
+                    {/*<div className="text-end">
                         <span className="badge bg-success me-1">
                             {plant.difficulty}
                         </span>
@@ -32,7 +32,7 @@ const PlantList = ({plants, selectedId, onSelect}: PlantListProps)=>{
                                 {plant.rarity}
                             </span>
                         )}
-                    </div>
+                    </div>*/}
                 </li>
             ))}
         </ul>
