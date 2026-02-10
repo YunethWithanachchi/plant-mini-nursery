@@ -29,3 +29,7 @@ export const getUser = async (id: number): Promise<User> => {
     const response = await axios.get(`${API_URL}/${id}`)
     return response.data
 }
+export const getUser = async (id: number): Promise<User> => {
+    const response = await axios.get(`${API_URL}/${id}`)
+    return response.data
+}
